@@ -184,3 +184,261 @@ justice-risk-platform/
 本项目的价值在于把基层法治治理中的“线索多、风险散、分派慢、反馈弱、评估难、普法泛”转化为可计算、可预警、可派单、可跟踪、可评估、可展示的数字化流程。
 
 平台既能服务评审展示，也具备继续扩展为实际业务系统的基础。后续可继续接入真实案件库、法律知识图谱、政策文件库、短信或微信公众号普法渠道、统一身份认证和多部门协同系统，进一步形成完整的基层法治风险治理平台。
+
+## 十一、平台使用方法
+
+### 1. 环境准备
+
+后端是 FastAPI 项目，前端是 React + Vite 项目，两者需要分别启动。
+
+推荐环境：
+
+- Python 3.10 及以上
+- Node.js 20 及以上
+- npm
+- Git
+
+如果使用当前服务器环境，可进入已有 conda 环境：
+
+```bash
+conda activate /home/jovyan/data/conda-envs/jiancha
+```
+
+进入项目根目录：
+
+```bash
+cd /home/jovyan/data/bugui_v2/web/justice-risk-platform
+```
+
+### 2. 后端启动方法
+
+后端目录没有 `package.json`，不要在 `backend/` 目录执行 `npm run dev`。后端应使用 Python 启动。
+
+安装依赖：
+
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+启动后端服务：
+
+```bash
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+启动成功后，后端接口地址为：
+
+```text
+http://localhost:8000
+```
+
+接口文档地址为：
+
+```text
+http://localhost:8000/docs
+```
+
+### 3. 前端启动方法
+
+进入前端目录：
+
+```bash
+cd frontend
+```
+
+安装依赖：
+
+```bash
+npm install
+```
+
+启动前端：
+
+```bash
+npm run dev
+```
+
+启动成功后，浏览器访问：
+
+```text
+http://localhost:5173
+```
+
+如果出现 `Unexpected token ??=`，通常是 Node.js 版本过低，请升级到 Node.js 20 及以上。如果出现 `Cannot find native binding`，通常是 `node_modules` 与当前系统平台不匹配，需要删除 `node_modules` 后重新执行 `npm install`。
+
+### 4. 环境变量配置
+
+项目根目录提供了 `.env.example`。首次运行时可复制为 `.env`：
+
+```bash
+cp .env.example .env
+```
+
+基础数据库配置默认使用 SQLite：
+
+```env
+DATABASE_URL=sqlite:///./justice_risk.db
+```
+
+默认大模型模式为离线回退：
+
+```env
+LLM_PROVIDER=echo
+```
+
+如需接入硅基流动等 OpenAI 兼容接口，可在 `.env` 中配置：
+
+```env
+LLM_PROVIDER=openai
+OPENAI_API_KEY=你的硅基流动API_KEY
+OPENAI_BASE_URL=https://api.siliconflow.cn/v1
+LLM_MODEL=Qwen/Qwen3-14B
+```
+
+如需使用天地图，在 `frontend/` 目录下创建或修改 `.env`：
+
+```env
+VITE_TIANDITU_TOKEN=你的天地图TOKEN
+```
+
+未配置天地图 Token 时，驾驶舱会使用本地 JSON 地图兜底展示。
+
+### 5. 演示数据生成与导入
+
+生成 100 条社区法治风险示例案件：
+
+```bash
+cd /home/jovyan/data/bugui_v2/web/justice-risk-platform
+python scripts/generate_demo_cases.py
+```
+
+导入演示案件到后端案件语料库：
+
+```bash
+cd backend
+python scripts/import_demo_cases.py
+```
+
+导入后可用接口检查案件是否存在：
+
+```bash
+curl http://localhost:8000/api/v1/analysis/corpus/CASE-2026-0001
+```
+
+如果返回 `case corpus item not found`，需要确认后端服务使用的数据库文件与导入脚本使用的是同一个 `DATABASE_URL`，并确认导入脚本是在项目 `backend/` 目录下执行。
+
+### 6. 主要功能访问路径
+
+前端启动后，可重点访问以下页面：
+
+| 功能 | 路径 | 说明 |
+|---|---|---|
+| 登录页 | `/login` | 平台入口页面 |
+| 数据驾驶舱 | `/dashboard` | 查看风险热力图、核心指标、预警列表、闭环链路 |
+| 社区风险治理 | `/community-risk` | 按西城区街道查看风险画像与案件 |
+| 街道案件列表 | `/community-risk/:street/cases` | 查看某街道全部案件 |
+| 街道风险画像 | `/community-risk/:street/profile` | 生成高发类型、治理建议和普法方案 |
+| 闭环任务列表 | `/workflow/tasks` | 查看已分派、处置中、已反馈、已评估任务 |
+| 任务创建页 | `/workflow/tasks/create` | 从预警线索生成处置任务 |
+| NLP 研判 | `/analysis/nlp` | 查看文本识别、风险研判和普法内容能力 |
+
+其中 `:street` 需要替换成具体街道名称，例如：
+
+```text
+/community-risk/西长安街街道/cases
+```
+
+### 7. 推荐演示流程
+
+1. 进入 `/dashboard`，先展示全区社区法治风险态势。
+2. 查看中央热力图，说明不同街道的风险等级和案件分布。
+3. 查看左侧核心指标、案件类型分布和月度趋势。
+4. 点击右侧实时预警，进入案件详情页，展示案件基本信息和闭环轨迹。
+5. 在实时预警中点击“去分派”，进入任务创建页，展示自动带入的街道、风险等级、高发类型、承办单位和处置动作。
+6. 保存任务后进入 `/workflow/tasks`，展示任务分派、处置反馈和效果评估流程。
+7. 将任务推进到“已评估”，查看自动生成的处置成效评估卡。
+8. 进入 `/community-risk`，选择具体街道，查看街道案件和社区法治风险画像。
+9. 在街道风险画像页展示高发案件类型、治理建议和精准普法方案。
+
+### 8. 常见问题
+
+#### 后端执行 `npm run dev` 报错
+
+原因是后端不是 Node 项目。请进入 `backend/` 后使用：
+
+```bash
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+#### 前端启动后页面空白或样式异常
+
+先确认依赖已安装：
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+如果提示缺少 `less`，执行：
+
+```bash
+npm install -D less
+```
+
+#### 大模型接口没有返回智能结果
+
+先确认 `.env` 中已配置：
+
+```env
+LLM_PROVIDER=openai
+OPENAI_API_KEY=你的API_KEY
+OPENAI_BASE_URL=https://api.siliconflow.cn/v1
+LLM_MODEL=Qwen/Qwen3-14B
+```
+
+修改 `.env` 后需要重启后端服务。
+
+#### 中文参数 curl 请求失败
+
+建议使用 `--data-urlencode`：
+
+```bash
+curl -G "http://localhost:8000/api/v1/dashboard/street-profile" \
+  --data-urlencode "street=西长安街街道" \
+  --data-urlencode "prefer_llm=true"
+```
+
+#### 地图没有显示真实底图
+
+检查 `frontend/.env` 是否配置：
+
+```env
+VITE_TIANDITU_TOKEN=你的天地图TOKEN
+```
+
+修改后重启前端服务。
+
+### 9. 代码提交建议
+
+提交到 GitHub 前，建议确认 `.gitignore` 已排除以下内容：
+
+```gitignore
+node_modules/
+frontend/node_modules/
+.env
+*.db
+*.sqlite
+frontend/dist/
+__pycache__/
+Screenshot*.png
+```
+
+提交命令：
+
+```bash
+git add .
+git commit -m "init justice risk platform"
+git push -u origin main
+```
