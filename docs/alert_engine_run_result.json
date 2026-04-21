@@ -1,0 +1,362 @@
+{
+  "as_of_date": "2026-04-16",
+  "scope_type": "community",
+  "profile_count": 2,
+  "alert_count": 4,
+  "profiles": [
+    {
+      "id": "70bccf18-d20b-455b-a927-e68149419fa9",
+      "created_at": "2026-04-16T10:49:01.993815",
+      "updated_at": "2026-04-16T10:49:01.993815",
+      "community_id": "c-a",
+      "community_name": "新街口社区",
+      "street_id": "新街口街道",
+      "street_name": "新街口街道",
+      "scope_type": "community",
+      "scope_id": "c-a",
+      "scope_name": "新街口社区",
+      "risk_type": "wage_arrears",
+      "stat_window_start": "2026-03-18",
+      "stat_window_end": "2026-04-16",
+      "case_count": 34,
+      "total_amount": 247050.0,
+      "people_count": 45,
+      "growth_rate": 34.0,
+      "repeat_defendant_rate": 1.0,
+      "repeat_defendant_max_count": 34,
+      "top_defendants": [
+        "某建设公司"
+      ],
+      "top_projects": [
+        "新街口排水改造项目"
+      ],
+      "risk_score": 100.0,
+      "risk_level": "red",
+      "previous_risk_level": null,
+      "metric_scores": [
+        {
+          "metric": "case_count",
+          "raw_value": 34.0,
+          "bucket_score": 100.0,
+          "weight": 0.3,
+          "weighted_contribution": 30.0,
+          "description": "案件量高发（>10件）"
+        },
+        {
+          "metric": "people_count",
+          "raw_value": 45.0,
+          "bucket_score": 100.0,
+          "weight": 0.2,
+          "weighted_contribution": 20.0,
+          "description": "群体性风险高（>=20人）"
+        },
+        {
+          "metric": "growth_rate",
+          "raw_value": 34.0,
+          "bucket_score": 100.0,
+          "weight": 0.15,
+          "weighted_contribution": 15.0,
+          "description": "爆发式增长（>100%）"
+        },
+        {
+          "metric": "repeat_defendant_rate",
+          "raw_value": 1.0,
+          "bucket_score": 100.0,
+          "weight": 0.1,
+          "weighted_contribution": 10.0,
+          "description": "高频主体显著集中（>60%）"
+        },
+        {
+          "metric": "total_amount",
+          "raw_value": 247050.0,
+          "bucket_score": 100.0,
+          "weight": 0.25,
+          "weighted_contribution": 25.0,
+          "description": "涉案金额高（>20万元）"
+        }
+      ],
+      "triggered_rules": [
+        "案件数量=34",
+        "涉及人数=45",
+        "近期增长率=34.00",
+        "重复主体复现率=1.00",
+        "涉案金额=247050.00元"
+      ],
+      "extra_meta": {
+        "used_weights": {
+          "case_count": 0.3,
+          "people_count": 0.2,
+          "growth_rate": 0.15,
+          "repeat_defendant_rate": 0.1,
+          "total_amount": 0.25
+        },
+        "window_days": 30,
+        "compare_window_days": 30
+      }
+    },
+    {
+      "id": "c417f871-4e5b-40a3-9d2c-1cfe40bce05e",
+      "created_at": "2026-04-16T10:49:02.007005",
+      "updated_at": "2026-04-16T10:49:02.007005",
+      "community_id": "c-b",
+      "community_name": "德胜社区",
+      "street_id": "德胜街道",
+      "street_name": "德胜街道",
+      "scope_type": "community",
+      "scope_id": "c-b",
+      "scope_name": "德胜社区",
+      "risk_type": "labor_dispute",
+      "stat_window_start": "2026-03-18",
+      "stat_window_end": "2026-04-16",
+      "case_count": 6,
+      "total_amount": 48000.0,
+      "people_count": 12,
+      "growth_rate": 2.0,
+      "repeat_defendant_rate": 1.0,
+      "repeat_defendant_max_count": 6,
+      "top_defendants": [
+        "某科技有限公司"
+      ],
+      "top_projects": [],
+      "risk_score": 72.0,
+      "risk_level": "orange",
+      "previous_risk_level": null,
+      "metric_scores": [
+        {
+          "metric": "case_count",
+          "raw_value": 6.0,
+          "bucket_score": 70.0,
+          "weight": 0.3,
+          "weighted_contribution": 21.0,
+          "description": "案件量较高（6-10件）"
+        },
+        {
+          "metric": "people_count",
+          "raw_value": 12.0,
+          "bucket_score": 80.0,
+          "weight": 0.2,
+          "weighted_contribution": 16.0,
+          "description": "群体性倾向明显（10-19人）"
+        },
+        {
+          "metric": "growth_rate",
+          "raw_value": 2.0,
+          "bucket_score": 100.0,
+          "weight": 0.15,
+          "weighted_contribution": 15.0,
+          "description": "爆发式增长（>100%）"
+        },
+        {
+          "metric": "repeat_defendant_rate",
+          "raw_value": 1.0,
+          "bucket_score": 100.0,
+          "weight": 0.1,
+          "weighted_contribution": 10.0,
+          "description": "高频主体显著集中（>60%）"
+        },
+        {
+          "metric": "total_amount",
+          "raw_value": 48000.0,
+          "bucket_score": 40.0,
+          "weight": 0.25,
+          "weighted_contribution": 10.0,
+          "description": "涉案金额中等（1-5万元）"
+        }
+      ],
+      "triggered_rules": [
+        "案件数量=6",
+        "涉及人数=12",
+        "近期增长率=2.00",
+        "重复主体复现率=1.00",
+        "涉案金额=48000.00元"
+      ],
+      "extra_meta": {
+        "used_weights": {
+          "case_count": 0.3,
+          "people_count": 0.2,
+          "growth_rate": 0.15,
+          "repeat_defendant_rate": 0.1,
+          "total_amount": 0.25
+        },
+        "window_days": 30,
+        "compare_window_days": 30
+      }
+    }
+  ],
+  "alerts": [
+    {
+      "id": "e71439ba-a68b-427d-8d5f-e4eb7679a41b",
+      "created_at": "2026-04-16T10:49:02.012124",
+      "updated_at": "2026-04-16T10:49:02.012124",
+      "community_id": "c-a",
+      "community_name": "新街口社区",
+      "street_id": "新街口街道",
+      "street_name": "新街口街道",
+      "scope_type": "project",
+      "scope_id": "新街口排水改造项目",
+      "scope_name": "新街口排水改造项目",
+      "risk_type": "wage_arrears",
+      "alert_code": "group_wage_arrears",
+      "alert_level": "red",
+      "title": "新街口排水改造项目 群体性欠薪预警",
+      "trigger_reason": "该工地/项目近30天涉及人数 45 人，达到群体性欠薪阈值 10 人",
+      "status": "active",
+      "profile_id": null,
+      "previous_level": null,
+      "current_level": null,
+      "case_count": 34,
+      "people_count": 45,
+      "total_amount": 247050.0,
+      "growth_rate": 34.0,
+      "repeat_defendant_rate": 1.0,
+      "repeat_defendant_max_count": 34,
+      "top_defendants": [
+        "某建设公司"
+      ],
+      "dashboard_visible": true,
+      "pushed_at": "2026-04-16T10:49:02.010108",
+      "extra_meta": {
+        "top_projects": [
+          "新街口排水改造项目"
+        ]
+      }
+    },
+    {
+      "id": "8473fb3c-a0e2-4283-b9e0-b5e4d493b5b6",
+      "created_at": "2026-04-16T10:49:02.002005",
+      "updated_at": "2026-04-16T10:49:02.002005",
+      "community_id": "c-a",
+      "community_name": "新街口社区",
+      "street_id": "新街口街道",
+      "street_name": "新街口街道",
+      "scope_type": "community",
+      "scope_id": "c-a",
+      "scope_name": "新街口社区",
+      "risk_type": "wage_arrears",
+      "alert_code": "risk_level_upgrade",
+      "alert_level": "red",
+      "title": "新街口社区 wage_arrears 风险等级预警",
+      "trigger_reason": "新街口社区 在统计窗口内 wage_arrears 风险评分为 34件/45人/247050.00元，综合评分升级为 red",
+      "status": "active",
+      "profile_id": "70bccf18-d20b-455b-a927-e68149419fa9",
+      "previous_level": null,
+      "current_level": "red",
+      "case_count": 34,
+      "people_count": 45,
+      "total_amount": 247050.0,
+      "growth_rate": 34.0,
+      "repeat_defendant_rate": 1.0,
+      "repeat_defendant_max_count": 34,
+      "top_defendants": [
+        "某建设公司"
+      ],
+      "dashboard_visible": true,
+      "pushed_at": "2026-04-16T10:49:01.997157",
+      "extra_meta": {
+        "top_projects": [
+          "新街口排水改造项目"
+        ],
+        "used_weights": {
+          "case_count": 0.3,
+          "people_count": 0.2,
+          "growth_rate": 0.15,
+          "repeat_defendant_rate": 0.1,
+          "total_amount": 0.25
+        }
+      }
+    },
+    {
+      "id": "87d1aef3-0df6-4e5c-9fc7-3de881d36ddb",
+      "created_at": "2026-04-16T10:49:02.009062",
+      "updated_at": "2026-04-16T10:49:02.009062",
+      "community_id": "c-b",
+      "community_name": "德胜社区",
+      "street_id": "德胜街道",
+      "street_name": "德胜街道",
+      "scope_type": "community",
+      "scope_id": "c-b",
+      "scope_name": "德胜社区",
+      "risk_type": "labor_dispute",
+      "alert_code": "risk_level_upgrade",
+      "alert_level": "orange",
+      "title": "德胜社区 labor_dispute 风险等级预警",
+      "trigger_reason": "德胜社区 在统计窗口内 labor_dispute 风险评分为 6件/12人/48000.00元，综合评分升级为 orange",
+      "status": "active",
+      "profile_id": "c417f871-4e5b-40a3-9d2c-1cfe40bce05e",
+      "previous_level": null,
+      "current_level": "orange",
+      "case_count": 6,
+      "people_count": 12,
+      "total_amount": 48000.0,
+      "growth_rate": 2.0,
+      "repeat_defendant_rate": 1.0,
+      "repeat_defendant_max_count": 6,
+      "top_defendants": [
+        "某科技有限公司"
+      ],
+      "dashboard_visible": true,
+      "pushed_at": "2026-04-16T10:49:02.008010",
+      "extra_meta": {
+        "top_projects": [],
+        "used_weights": {
+          "case_count": 0.3,
+          "people_count": 0.2,
+          "growth_rate": 0.15,
+          "repeat_defendant_rate": 0.1,
+          "total_amount": 0.25
+        }
+      }
+    },
+    {
+      "id": "6c9903c6-bf90-4ce1-9b8c-d620c76e1854",
+      "created_at": "2026-04-16T10:49:02.005006",
+      "updated_at": "2026-04-16T10:49:02.005006",
+      "community_id": "c-a",
+      "community_name": "新街口社区",
+      "street_id": "新街口街道",
+      "street_name": "新街口街道",
+      "scope_type": "community",
+      "scope_id": "c-a",
+      "scope_name": "新街口社区",
+      "risk_type": "wage_arrears",
+      "alert_code": "high_frequency_defendant",
+      "alert_level": "orange",
+      "title": "新街口社区 高频风险主体预警",
+      "trigger_reason": "同一被告/主体近30天重复出现 34 次，超过阈值 32 次；高频主体：某建设公司",
+      "status": "active",
+      "profile_id": "70bccf18-d20b-455b-a927-e68149419fa9",
+      "previous_level": null,
+      "current_level": "red",
+      "case_count": 34,
+      "people_count": 45,
+      "total_amount": 247050.0,
+      "growth_rate": 34.0,
+      "repeat_defendant_rate": 1.0,
+      "repeat_defendant_max_count": 34,
+      "top_defendants": [
+        "某建设公司"
+      ],
+      "dashboard_visible": true,
+      "pushed_at": "2026-04-16T10:49:02.003006",
+      "extra_meta": {
+        "top_projects": [
+          "新街口排水改造项目"
+        ],
+        "used_weights": {
+          "case_count": 0.3,
+          "people_count": 0.2,
+          "growth_rate": 0.15,
+          "repeat_defendant_rate": 0.1,
+          "total_amount": 0.25
+        }
+      }
+    }
+  ],
+  "used_weights": {
+    "case_count": 0.3,
+    "people_count": 0.2,
+    "growth_rate": 0.15,
+    "repeat_defendant_rate": 0.1,
+    "total_amount": 0.25
+  }
+}

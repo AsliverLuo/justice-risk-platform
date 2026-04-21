@@ -1,0 +1,14 @@
+.progress-cases-page {
+  color: #ecfffb;
+}
+
+.progress-cases-page .ant-collapse-header,
+.progress-cases-page .ant-collapse-header .ant-typography,
+.progress-cases-page .ant-collapse-header .ant-typography-secondary,
+.progress-cases-page .ant-collapse-expand-icon {
+  color: #ecfffb;
+}
+
+.progress-cases-page .ant-collapse-header .ant-typography-secondary {
+  color: #95b8b0;
+}

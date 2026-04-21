@@ -1,0 +1,9 @@
+.workflow-task-list-page .ant-collapse-header,
+.workflow-task-list-page .ant-collapse-header .ant-typography,
+.workflow-task-list-page .ant-collapse-expand-icon {
+  color: #ecfffb;
+}
+
+.workflow-task-list-page .ant-collapse-header .ant-typography-secondary {
+  color: #95b8b0;
+}

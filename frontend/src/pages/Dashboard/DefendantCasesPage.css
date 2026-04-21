@@ -1,0 +1,10 @@
+.defendant-cases-page .ant-collapse-header,
+.defendant-cases-page .ant-collapse-header .ant-typography,
+.defendant-cases-page .ant-collapse-header .ant-typography-secondary,
+.defendant-cases-page .ant-collapse-expand-icon {
+  color: #ecfffb;
+}
+
+.defendant-cases-page .ant-collapse-header .ant-typography-secondary {
+  color: #95b8b0;
+}

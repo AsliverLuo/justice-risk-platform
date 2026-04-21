@@ -1,0 +1,14 @@
+{
+  "package": "justice-risk-platform_pkg1",
+  "version": "resend-2026-04-13",
+  "description": "Knowledge base and AI infrastructure starter pack",
+  "contains": [
+    "backend/app/core",
+    "backend/app/db",
+    "backend/app/infra",
+    "backend/app/modules/knowledge",
+    "mock_data/legal_knowledge_sample.json",
+    "docs/guide_pkg1.md",
+    "docs/usage_pkg1.md"
+  ]
+}
